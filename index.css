@@ -11,6 +11,20 @@
     --third-color: #525252;
     --block-color: #202020;
     --block-sub: #979797;
+    --popup-color: #FFFFFF;
+    --input-color: #FFF;
+    
+    --space-xs: 0.5rem;   
+    --space-sm: 0.75rem;   
+    --space-md: 1rem;     
+    --space-lg: 1.5rem;  
+    --space-xl: 2rem;    
+    --space-2xl: 3rem;   
+    --space-3xl: 4rem; 
+    --space-4xl: 4.5rem;
+    --space-5xl: 7.5rem;
+    --space-6xl: 12.5rem;
+    --space-7xl: 18.75rem;
 }
 
 .dark {
@@ -26,6 +40,8 @@
     --third-color: #F4F4F0;
     --block-color: #F4F4F0;
     --block-sub: #525252;
+    --popup-color: #343434;
+    --input-color: #525252
 }
 
 i {
@@ -35,9 +51,7 @@ i {
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
-    padding-top: 100px;
-    padding-left: 120px;
-    padding-right: 120px;
+    padding: var(--space-5xl) 2rem;
     font-family: "Inter";
     font-style: normal;
     line-height: normal;
@@ -45,6 +59,21 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+@media (max-width: 1024px) {
+    body {
+        padding: var(--space-3xl) 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: var(--space-xl) 1rem;
+    }
 }
 
 footer {
@@ -52,8 +81,22 @@ footer {
     justify-content: space-between;
 }
 
+input {
+    border-radius: 0.5rem;
+    border: 1px solid var(--Grey-100, #BEBEBE);
+    background: var(--input-color);
+    display: flex;
+    padding: 1rem 2rem;
+    align-items: center;
+    gap: 0.625rem;
+    align-self: stretch;
+    margin-top: var(--space-lg);
+    box-sizing: border-box;
+    width: 100%;
+}
+
 .placeHolder {
-    border-radius: 20px;
+    border-radius: 1.25rem;
 }
 
 .placeHolder.small {
@@ -68,39 +111,47 @@ footer {
 }
 
 .navbar div {
-    margin: 0 10px;
+    margin: 0 0.625rem;
 }
 
 .navbar .logo {
-    font-size: 24px;
+    font-size: 1.5rem;
     font-weight: 600;
 }
 
 button {
     border: 1px solid;
-    border-radius: 12px;
+    border-radius: 0.75rem;
     cursor: pointer;
     padding: 0.5em 1em;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     border: 1px solid rgba(190, 190, 190, 0.20);
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: 700;
 }
 
+button:hover {
+    opacity: 0.7;
+}
+
 button.small {
-    font-size: 14px;
+    font-size: 0.875rem;
 }
 
 .waitlist {
-    border-radius: 12px;
+    border-radius: 0.75rem;
     background: var(--wl-btn-color);
     color: var(--wl-txt-color);
 }
 
+.waitlist.pop {
+    margin-top: var(--space-4xl);
+}
+
 .example {
-    margin-left: 0.5rem;
+    margin-left: var(--space-xs);
     background: var(--ex-btn-color);
     color: var(--ex-txt-color);
 }
@@ -113,162 +164,265 @@ button.small {
 
 .info {
     display: flex;
-    padding: 10px 18px;
+    padding: 0.625rem 1.125rem;
     justify-content: center;
     align-items: center;
-    gap: 10px;
-    border-radius: 25px;
+    gap: 0.625rem;
+    border-radius: 1.5625rem;
     background: var(--info-bg);
-    box-shadow: 0 4px 20px 0 rgba(97, 97, 97, 0.10);
+    box-shadow: 0 0.25rem 1.25rem 0 rgba(97, 97, 97, 0.10);
     color: var(--info-txt);
-    text-align: center;  
-    font-size: 16px;
+    text-align: center;
+    font-size: 1rem;
     font-weight: 500;
-    margin-top: 120px;
-    width: fit-content;   
+    margin-top: var(--space-5xl);
+    width: fit-content;
 }
 
 .intro {
     color: var(--text-color);
     text-align: center;
     font-family: Inter;
-    font-size: 80px;
+    font-size: 5rem;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
-    margin-top: 48px;
+    margin-top: var(--space-2xl);
+}
+
+@media (max-width: 768px) {
+    .intro {
+        font-size: 3rem;
+    }
 }
 
 .secondary {
-    margin-top: 28px;
-    width: 553px;
+    margin-top: 1.75rem;
+    max-width: 34.5625rem;
     color: var(--secondary-txt);
     text-align: center;
     font-family: Inter;
-    font-size: 24px;
+    font-size: 1.5rem;
     font-style: normal;
     font-weight: 400;
-    line-height: 36px;
-    letter-spacing: 0.24px;
+    line-height: 2.25rem;
+    letter-spacing: 0.015em;
+}
+
+@media (max-width: 768px) {
+    .secondary {
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+        max-width: 100%;
+    }
 }
 
 .btn {
-    margin-top: 72px;
+    margin-top: var(--space-4xl);
 }
 
 .sub {
-    margin-top: 200px;
+    margin-top: var(--space-6xl);
 }
 
 .trust {
     text-align: center;
-    font-size: 24px;
+    font-size: 1.5rem;
     font-weight: 500;
 }
 
 .first {
-    margin-top: 200px;
+    margin-top: var(--space-6xl);
 }
 
 .big {
     align-self: stretch;
-    font-size: 48px;
+    font-size: 3rem;
     font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .big {
+        font-size: 2rem;
+    }
 }
 
 .list {
     display: flex;
     justify-content: space-between;
+    gap: var(--space-lg);
+}
+
+@media (max-width: 768px) {
+    .list {
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 .item {
-    margin-top: 48px;
-    width: 380px;
+    margin-top: var(--space-2xl);
+    max-width: 23.75rem;
+    flex: 1;
 }
 
 .smallTitle {
-    font-size: 30px;
+    font-size: 1.875rem;
     font-weight: 700;
+}
+
+@media (max-width: 768px) {
+    .smallTitle {
+        font-size: 1.5rem;
+    }
+}
+
+.second {
+    margin-top: var(--space-6xl);
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-xl);
+}
+
+.second .big {
+    max-width: 40%;
+    word-wrap: break-word;
+}
+
+.second .smallInfo {
+    max-width: 50ch;
+}
+
+@media (max-width: 768px) {
+    .second {
+        flex-direction: column;
+        gap: var(--space-lg);
+    }
+    
+    .second .big,
+    .second .smallInfo {
+        max-width: 100%;
+    }
 }
 
 .smallInfo {
     color: var(--secondary-txt);
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: 400;
-    line-height: 30px;
+    line-height: 1.875rem;
 }
 
-.second {
-    margin-top: 200px;
-    display: flex;
-    justify-content: space-between;
+.card .smallInfo {
+    max-width: 50ch;
 }
 
 .card {
-    margin-top: 64px;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    gap: var(--space-lg);
     align-items: center;
 }
 
+@media (max-width: 768px) {
+    .card {
+        grid-template-columns: 1fr;
+    }
+}
+
+.card {
+    margin-top: var(--space-3xl); /* 64px -> space variable */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-lg);
+}
+
+@media (max-width: 768px) {
+    .card {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
 .smTitle {
-    font-size: 36px;
+    font-size: 2.25rem; /* 36px -> rem */
     font-weight: 600;
 }
 
+@media (max-width: 768px) {
+    .smTitle {
+        font-size: 1.75rem;
+    }
+}
+
 .third {
-    margin-top: 300px;
+    margin-top: var(--space-7xl); /* 300px -> space variable */
 }
 
 .thirdText {
     color: var(--third-color);
     font-family: Inter;
-    font-size: 24px;
+    font-size: 1.5rem; /* 24px -> rem */
     font-style: normal;
     font-weight: 400;
-    line-height: 36px;
-    letter-spacing: 0.24px;
+    line-height: 2.25rem; /* 36px -> rem */
+    letter-spacing: 0.015em; /* 0.24px -> em */
 }
 
 .blockSection {
     display: flex;
-    margin-top: 64px;
+    margin-top: var(--space-3xl); /* 64px -> space variable */
     justify-content: space-around;
+    gap: var(--space-lg);
+}
+
+@media (max-width: 768px) {
+    .blockSection {
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 .block {
     width: fit-content;
     display: flex;
-    padding: 48px;
+    padding: var(--space-2xl); /* 48px -> space variable */
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 45px;
-    border-radius: 20px;
+    gap: 2.8125rem; /* 45px -> rem */
+    border-radius: 1.25rem; /* 20px -> rem */
     background: var(--block-color);
 }
 
 .blockText {
-    max-width: 20ch;
+    max-width: 20ch; /* Keep ch for text width - this is good! */
     color: var(--bg-color);
     text-align: center;
-    font-size: 30px;
+    font-size: 1.875rem; /* 30px -> rem */
     font-weight: 600;
-    line-height: 48px;
+    line-height: 3rem; /* 48px -> rem */
+}
+
+@media (max-width: 768px) {
+    .blockText {
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
 }
 
 .blockSubText {
     color: var(--block-sub);
     text-align: center;
     font-family: Inter;
-    font-size: 20px;
+    font-size: 1.25rem; /* 20px -> rem */
     font-style: normal;
     font-weight: 400;
-    line-height: 30px; /* 150% */
+    line-height: 1.875rem; /* 30px -> rem */
 }
 
 .fourth {
-    margin-top: 300px;
+    margin-top: var(--space-7xl); /* 300px -> space variable */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -277,6 +431,49 @@ button.small {
 
 .end {
     text-align: center;
-    font-size: 60px;
+    font-size: 3.75rem; /* 60px -> rem */
     font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .end {
+        font-size: 2.5rem;
+    }
+}
+
+.popup {
+    border-radius: 1.25rem; /* 20px -> rem */
+    border: 1px solid var(--Grey-100, #BEBEBE); /* Keep 1px for borders */
+    background: var(--popup-color);
+    box-shadow: 0 0.25rem 1.875rem 0 rgba(190, 190, 190, 0.40); /* 4px 30px -> rem */
+    padding: var(--space-2xl); /* 48px -> space variable */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.75rem; /* 28px -> rem */
+    width: 80%;
+    max-width: 600px; /* Add max-width for better UX */
+}
+
+.dissapear {
+    display: none;
+}
+
+.inputTitle {
+    margin-top: var(--space-2xl); /* 48px -> space variable */
+}
+
+.inputItem {
+    width: 100%;
+}
+
+#theme-toggle {
+    cursor: pointer;
+    vertical-align: middle;
+    margin-left: var(--space-md); /* 1rem -> space variable */
+}
+
+#theme-toggle:hover {
+    opacity: 0.7;
 }

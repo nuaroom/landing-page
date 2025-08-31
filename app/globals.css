@@ -1,0 +1,202 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0b0b0b;
+  --foreground: #e7e7e7;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0b0b0b;
+    --foreground: #e7e7e7;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system,
+    Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+/* Reusable utilities for the landing */
+.container-page {
+  @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.card {
+  @apply rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm;
+}
+
+.btn {
+  @apply inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-medium transition-colors;
+}
+
+.btn-primary {
+  @apply bg-white text-black hover:bg-zinc-200;
+}
+
+.btn-secondary {
+  @apply bg-transparent border border-white/15 text-white hover:bg-white/10;
+}
+
+/* Gradients and decorative backgrounds */
+.text-gradient {
+  background: linear-gradient(90deg, #a78bfa, #22d3ee, #34d399);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.bg-grid-mask {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(circle at 50% 20%, black, transparent 60%);
+  pointer-events: none;
+}
+
+.bg-radial-spotlight {
+  position: absolute;
+  inset: -10% -10% auto -10%;
+  height: 60vh;
+  background: radial-gradient(closest-side, rgba(79,70,229,0.25), transparent 65%);
+  filter: blur(24px);
+  pointer-events: none;
+}
+
+.bg-radial-spotlight-2 {
+  position: absolute;
+  right: -20%;
+  top: 30vh;
+  width: 60vw;
+  height: 60vw;
+  background: radial-gradient(closest-side, rgba(16,185,129,0.2), transparent 70%);
+  filter: blur(28px);
+  pointer-events: none;
+}
+
+.card-glow {
+  position: relative;
+}
+.card-glow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 1rem; /* matches rounded-2xl */
+  padding: 1px;
+  background: linear-gradient(120deg, rgba(167,139,250,0.45), rgba(34,211,238,0.35));
+  -webkit-mask: 
+    linear-gradient(#000 0 0) content-box, 
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Subtle floating animation helpers */
+@keyframes floatSlow {
+  0% { transform: translateY(0px) translateX(0px); }
+  50% { transform: translateY(-8px) translateX(4px); }
+  100% { transform: translateY(0px) translateX(0px); }
+}
+
+.animate-float-slow {
+  animation: floatSlow 8s ease-in-out infinite;
+}
+
+.progress-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 2px;
+  transform-origin: left;
+  background: linear-gradient(90deg, #a78bfa, #22d3ee, #34d399);
+  z-index: 50;
+}
+
+/* Duct tape label effect */
+.tape-label {
+  display: inline-block;
+  padding: 0.075em 0.35em;
+  border-radius: 0.15rem;
+  position: relative;
+  color: #0b0b0b;
+  background-image:
+    /* subtle top-to-bottom sheen */
+    linear-gradient(180deg, rgba(255,255,255,0.35), rgba(255,255,255,0.06) 45%, rgba(0,0,0,0.08) 95%),
+    /* fine horizontal fiber */
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.08) 0 1px, transparent 1px 3px),
+    /* diagonal stress lines */
+    repeating-linear-gradient(25deg, rgba(0,0,0,0.06) 0 2px, transparent 2px 8px),
+    linear-gradient(180deg, #e5e7eb, #cbd5e1);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.35), inset 0 -1px 0 rgba(0,0,0,0.15);
+  filter: contrast(1.04) saturate(0.95);
+}
+
+.tape-label::before {
+  /* left torn edge */
+  content: "";
+  position: absolute;
+  left: -6px;
+  top: 2px;
+  width: 12px;
+  height: calc(100% - 4px);
+  background: var(--background);
+  box-shadow: inset -1px 0 0 rgba(0,0,0,0.2);
+  clip-path: polygon(0% 0%, 55% 8%, 100% 20%, 70% 45%, 100% 68%, 48% 88%, 0% 100%);
+  transform: rotate(-3deg);
+  pointer-events: none;
+}
+
+.tape-label::after {
+  /* right torn edge */
+  content: "";
+  position: absolute;
+  right: -6px;
+  top: 2px;
+  width: 12px;
+  height: calc(100% - 4px);
+  background: var(--background);
+  box-shadow: inset 1px 0 0 rgba(0,0,0,0.2);
+  clip-path: polygon(100% 0%, 45% 8%, 0% 20%, 30% 45%, 0% 68%, 52% 88%, 100% 100%);
+  transform: rotate(3deg);
+  pointer-events: none;
+}
+
+@keyframes tapeStick {
+  0% { transform: rotate(-10deg) translateY(-6px) scaleX(0.6); opacity: 0; }
+  60% { transform: rotate(-3deg) translateY(1px) scaleX(1.04); opacity: 1; }
+  100% { transform: rotate(-2deg) translateY(0) scaleX(1); }
+}
+
+.animate-tape-stick {
+  animation: tapeStick 700ms cubic-bezier(0.22, 1, 0.36, 1) 200ms both;
+}
+
+/* faint crease across the tape for realism */
+.tape-crease {
+  position: relative;
+}
+.tape-crease::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  right: 6px;
+  top: 55%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,0,0,0.2), transparent);
+  opacity: 0.6;
+  transform: rotate(-1.2deg);
+  pointer-events: none;
+}

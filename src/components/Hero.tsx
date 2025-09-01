@@ -46,7 +46,7 @@ export function Hero() {
         </motion.div>
         <div className="space-y-3">
           <motion.h1 variants={item} className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight">
-            Don't {" "}
+          Don&apos;t {" "}
             <motion.span
               className="tape-label tape-crease inline-block align-baseline"
               initial={{ rotate: -8, y: -8, opacity: 0, scaleX: 0.7 }}

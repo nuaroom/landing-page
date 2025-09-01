@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 type PanelDemoProps = {
   className?: string;
@@ -17,7 +17,7 @@ const container = {
   })
 };
 
-const item = {
+const item: Variants = {
   hidden: { opacity: 0, y: 6 },
   show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 240, damping: 20 } }
 };
@@ -34,7 +34,7 @@ export function PanelDemo({ className = "", delay = 0.05, lines = 3 }: PanelDemo
     >
       {/* soft gradient wash */}
       <div
-        aria-hidden
+        aria-hidden="true"
         className="absolute inset-0 opacity-30"
         style={{
           background:
@@ -48,7 +48,7 @@ export function PanelDemo({ className = "", delay = 0.05, lines = 3 }: PanelDemo
           <motion.span
             key={c}
             className="h-2 w-2 rounded-full"
-            style={{ backgroundColor: c as string }}
+            style={{ backgroundColor: c }}
             variants={item}
           />
         ))}
@@ -78,7 +78,7 @@ export function PanelDemo({ className = "", delay = 0.05, lines = 3 }: PanelDemo
 
       {/* shimmer sweep */}
       <motion.div
-        aria-hidden
+        aria-hidden="true"
         className="pointer-events-none absolute inset-0"
         initial={{ x: "-120%" }}
         whileInView={{ x: ["-120%", "120%"] }}
@@ -94,5 +94,3 @@ export function PanelDemo({ className = "", delay = 0.05, lines = 3 }: PanelDemo
 }
 
 export default PanelDemo;
-
-
